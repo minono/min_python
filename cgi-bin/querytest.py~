@@ -1,0 +1,18 @@
+#!/usr/bin/env/ python
+
+html_body = """
+<html><body>
+foo = %s
+</body></html>"""
+
+import cgi
+form=cgi.FieldStorage()
+
+print "Content-type: text/html(J\n\n"(B
+print html_body % form['foo'].value
+
+
+
+
+
+
