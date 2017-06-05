@@ -1,0 +1,11 @@
+<html>
+    <head>
+        <meta http-equiv="content-type" content="text.html;charset=utf-8">
+    </head>
+    <body>
+        <form action="/cgi-bin/verticalize.py" method="POST">
+            <textarea name="body" cols="40" rows="20"></textarea>
+            <br />
+        </form>
+    </body>
+</html>
