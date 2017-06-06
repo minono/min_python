@@ -29,6 +29,7 @@ else:
         errors["title"] = u"タイトルを入力してください"
     if not url.startswith("http://"):
         errors["url"] = u"正しいURLを入力してください"
+   
     if not errors:
         rss = Rssurl(id = int(f.getvalue("id")))
         rss.title = unicode(f.getvalue("title", ""), "utf-8", "ignore")
@@ -42,13 +43,3 @@ res = Response()
 body = t.render(value_dic)
 res.set_body(body)
 print res
-
-
-
-
-
-
-
-
-
-

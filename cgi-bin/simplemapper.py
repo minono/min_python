@@ -135,18 +135,17 @@ class BaseMapper(object):
                     break
             where.append(" ".join((key, ct, "? ")))
             values.append(kws[key])
-            wherestr = "AND ".join(where)
-            sql = "SELECT id FROM " + cls.__name__
-            if wherestr:
-                sql += " WHERE " + wherestr
-            sql += order
-            cur = cls.getconnection().cursor()
-            cur.execute(sql, values)
-            for item in cur.fetchall():
-                ins = cls(id = item[0])
-
-                yield ins
-            cur.close()
+        wherestr = "AND ".join(where)
+        sql = "SELECT id FROM " + cls.__name__
+        if wherestr:
+            sql += " WHERE " + wherestr
+        sql += order
+        cur = cls.getconnection().cursor()
+        cur.execute(sql, values)
+        for item in cur.fetchall():
+            ins = cls(id = item[0])    
+            yield ins
+        cur.close()
 
     def __repr__(self):
         """

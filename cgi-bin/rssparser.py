@@ -13,18 +13,16 @@ def parse_rss(url):
     root = rss.getroot()
     rsslist = []
     # RSS 2.0のitemエレメントだけを抜き出す
-    for item in [ x for x in root.getiterator() if "item" in x.tag]:
-
-        rssdict = ()
+    for item in [ x for x in root.getiterator()
+                  if "item" in x.tag]:
+        rssdict = {}
         for elem in item.getiterator():
-            for k in ['link', 'title', 'description', 'author', 'pubDate']:
+            for k in ['link', 'title', 'description', 'author',
+                      'pubDate']:
                 if k in elem.tag:
                     rssdict[k] = elem.text
-
                 else:
                     rssdict[k] = rssdict.get(k, "N/A")
-
         rsslist.append(rssdict)
-
-        return rsslist
+    return rsslist
     

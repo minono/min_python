@@ -1,12 +1,17 @@
 #!/home/minori/.pyenv/shims/python
 # coding: utf-8
 
+# 標準モジュールをimportする
+
 import cgi
 import os
 
 class Request(object):
     """
-    ああああ
+    HTTPのりくえすとをはんどりんぐするくらす
+    CGI側でインスタンスを生成することによって利用する
+    クエリデータや環境変数へのアクセス、主要ヘッダへの
+    アクセス用メソッドを提供
     """
 
     def __init__(self, environ=os.environ):
@@ -21,7 +26,7 @@ class Request(object):
 class Response(object):
 
     """
-    あああああ
+    レスポンスやヘッダの保持、ヘッダを含めたレスポンスの送信を行う
 
     """
 
@@ -30,10 +35,11 @@ class Response(object):
         """
 
         """
-        self.headers={'Content-type':'text/html;charset=%s' % charset}
+        self.headers={'Content-type':'text/html;charset=%s' %
+                      charset}
         self.body=""
         self.status=200
-        self.status_messeage=''
+        self.status_message=''
 
     def set_header(self, name, value):
         """
@@ -94,14 +100,19 @@ def get_htmltemplate():
 
     <html>
         <head>
-            <meta http-equiv="content-type" content="text/html;charset=utf-8 /">
+            <meta http-equiv="content-type" 
+                content="text/html;charset=utf-8" />
         </head>
         <body>
-            %s
+        %s
         </body>
     </html>"""
 
     return html_body
 
+import time
 
-
+_weekdayname = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"]
+_monthname = [None,
+              "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+              "Jul", "Aug", "sep", "oct", "Nov", "Dec"]

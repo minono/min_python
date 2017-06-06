@@ -7,17 +7,18 @@ import cgitb; cgitb.enable()
 
 form_body = u"""
     <form method="POST" action="/cgi-bin/rssreader1.py">
-        RSS¤ÎURL:
+        RSSã®URL:
         <input type="text" size="40" name="url" value="%s"/>
         <input type="submit" />
     </form>"""
 
 rss_parts = u"""
+
     <h3><a href="%(link)s">%(title)s</a></h3>
     <p>%(description)s</p>
     """
 
-cotent = u"URL¤òÆşÎÏ¤·¤Æ¤¯¤À¤µ¤¤"
+content = u"URLã‚’å…¥åŠ›ã—ã¦ãã ã•ã„"
 req = Request()
 if req.form.has_key('url'):
     try:

@@ -13,6 +13,7 @@ value_dic = {"errors":errors, "title":"", "url":"", "item_id":""}
 req = Request()
 f = req.form
 
+p = path.join(path.dirname(__file__), "addform.html")
 
 if f.getvalue("posted"):
     title = unicode(f.getvalue("title", ""), "utf-8", "ignore")
@@ -27,10 +28,9 @@ if f.getvalue("posted"):
     if not errors:
         Rssurl(title = title, url = url)
         p = path.join(path.dirname(__file__), "posted.html")
-        value_dic["message"] = u"RSS取得を追加しました"
+        value_dic["message"] = u"RSSを追加しました"
 
 res = Response()
-p = path.join(path.dirname(__file__), "addform.html")
 t = SimpleTemplate(file_path = p)
 body = t.render(value_dic)
 res.set_body(body)
